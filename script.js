@@ -4,7 +4,16 @@ function initRandomQuotes() {
     '#random-quotes .anotherQuote'
   )
   const quoteAuthor = document.querySelector('#random-quotes .author')
+  // key used in local storage in store quotes
+  const quoteStorageKey = 'm-quotes'
   let quotes = []
+  // Check if quotes are already there
+  const storedQuotes = JSON.parse(localStorage.getItem(quoteStorageKey))
+  if (storedQuotes && storedQuotes.length > 0) {
+    quotes = storedQuotes
+  } else {
+    localStorage.removeItem(quoteStorageKey)
+  }
   const getRandomNumber = function (quotes) {
     const min = 0
     const max = quotes.length - 1
@@ -35,6 +44,7 @@ function initRandomQuotes() {
       })
       .then(function (data) {
         quotes = data
+        localStorage.setItem(quoteStorageKey, JSON.stringify(data))
         setQuote(data[0])
       })
   }
