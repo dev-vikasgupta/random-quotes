@@ -13,7 +13,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh; /* make default body height to it's view */
+  height: 98vh; /* make default body height to it's view */
   padding: 20px;
 }
 #random-quotes > .container {
@@ -31,11 +31,22 @@ body {
   letter-spacing: 2px;
 }
 #random-quotes .quote {
+  display: block;
+  font-style: normal;
   font-size: 30px;
   letter-spacing: 1px;
-  line-height: 40px;
+  line-height: 50px;
   margin: 50px auto;
   max-width: 600px;
+}
+#random-quotes .quote::before {
+  content: open-quote;
+  font-size: xxx-large;
+  margin-right: 10px;
+}
+#random-quotes .quote::after {
+  content: close-quote;
+  font-size: xxx-large;
 }
 #random-quotes .anotherQuote {
   background-color: #9f68e0;
@@ -52,4 +63,10 @@ body {
 }
 #random-quotes .anotherQuote:active {
   transform: scale(0.98);
+}
+#random-quotes .author {
+  text-align: right;
+  font-style: italic;
+  opacity: 0.8;
+  margin: 10px auto;
 }
